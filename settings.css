@@ -1,114 +1,66 @@
-body {
-  margin: 0;
-  padding: 0;
-  background: url('assets/dashboard_icons_bg.png') no-repeat center center fixed;
-  background-size: cover;
-  font-family: 'Segoe UI', sans-serif;
-  color: #fff;
-  text-align: center;
+.settings-section {
+  margin-top: 40px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  box-shadow: 0 0 10px #00f5a0;
 }
 
-.settings-container {
-  padding: 100px 20px 40px;
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.settings-icon {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 20px;
-  box-shadow: 0 0 20px #00f5a0;
-}
-
-h2 {
+.settings-section h3 {
   color: #00f5a0;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
-.form-group {
-  margin: 15px 0;
-  text-align: left;
+.setting-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 14px;
-  color: #ccc;
+.setting-option img.option-icon,
+.setting-option .emoji-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #fff;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 0 8px #00f5a0;
 }
 
-input, select {
-  width: 100%;
+.setting-option input {
+  flex: 1;
   padding: 10px;
   border-radius: 10px;
   border: none;
   outline: none;
   font-size: 15px;
-  box-shadow: 0 0 8px #00f5a0;
+  box-shadow: 0 0 6px #00f5a0;
   background: rgba(255, 255, 255, 0.07);
   color: #fff;
 }
 
-button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 20px;
+.setting-option button {
+  padding: 8px 16px;
   background: #00f5a0;
   color: #000;
   font-weight: bold;
   border: none;
-  border-radius: 30px;
+  border-radius: 20px;
   cursor: pointer;
-  box-shadow: 0 0 12px #00f5a0;
-  font-size: 16px;
-}
-
-button:hover {
-  background: #00d48f;
-}
-
-.nav-icon {
-  position: fixed;
-  top: 15px;
-  left: 15px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-  cursor: pointer;
-  z-index: 1000;
+  font-size: 14px;
   box-shadow: 0 0 10px #00f5a0;
 }
 
-.ad-banner {
-  width: 100%;
-  height: 60px;
-  background: #f5f5f5;
-  text-align: center;
-  line-height: 60px;
-  color: #000;
-  box-shadow: 0 0 8px #aaa;
-  font-size: 14px;
+.setting-option button:hover {
+  background: #00d48f;
 }
 
-.top-banner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100;
-}
-
-.bottom-banner {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 100;
-}
-
-body {
-  padding-top: 60px;
-  padding-bottom: 60px;
+/* Prevent focus outline box glow */
+*:focus {
+  outline: none !important;
 }

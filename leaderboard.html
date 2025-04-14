@@ -14,11 +14,11 @@
   <div class="ad-banner top-banner">[ Top Banner Ad ]</div>
 
   <!-- Back Icon -->
-  <img src="assets/icon_nevigation.png" class="nav-icon" onclick="goBack()" alt="Back" />
+  <img src="assets/icon_nevigation.png" class="nav-icon" onclick="goBack()" alt="Back" tabindex="-1" />
 
   <div class="leaderboard-container">
     <img src="assets/icon_leaderboard.png" class="leader-icon" alt="Leaderboard" />
-    <h2>Top Earners</h2>
+    <h2 class="glow-title">Top Earners</h2>
 
     <div id="leaderList" class="leader-list">
       <!-- Filled by JS -->
@@ -27,6 +27,31 @@
 
   <!-- Bottom Ad -->
   <div class="ad-banner bottom-banner">[ Bottom Banner Ad ]</div>
+
+  <!-- Firebase Auth Check -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDo6BwWCRTexL_-lUwgy41FYB3zpJKRiWU",
+      authDomain: "money-master-89c02.firebaseapp.com",
+      projectId: "money-master-89c02",
+      storageBucket: "money-master-89c02.appspot.com",
+      messagingSenderId: "226410161274",
+      appId: "1:226410161274:web:62793ff8d39e0d642707c3",
+      measurementId: "G-62K0SFSZK4"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = "login.html";
+      }
+    });
+  </script>
 
   <script>
     if ('serviceWorker' in navigator) {

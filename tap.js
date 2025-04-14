@@ -12,29 +12,34 @@ function initTapPage() {
   coinDisplay.textContent = coinCount;
 }
 
-// Handle Tap
+// This function is triggered from body click in tap.html (already wrapped)
 function handleTap() {
   coinCount += 1;
   coinDisplay.textContent = coinCount;
   localStorage.setItem("coins", coinCount);
 
-  // Icon shrink animation
-  tapIcon.src = "assets/bitcoin_tap_icon.png";
-  setTimeout(() => {
-    tapIcon.src = "assets/bitcoin_idle_icon.png";
-  }, 150);
+  // Animate bitcoin icon if needed
+  if (tapIcon) {
+    tapIcon.src = "assets/bitcoin_tap_icon.png";
+    setTimeout(() => {
+      tapIcon.src = "assets/bitcoin_idle_icon.png";
+    }, 150);
+  }
 
-  // Play sound
-  tapSound.play().catch(() => {});
+  // Play tap sound
+  if (tapSound) {
+    tapSound.currentTime = 0;
+    tapSound.play().catch(() => {});
+  }
 }
 
-// Navigate to dashboard
+// Dashboard redirection
 function goToDashboard() {
   window.location.href = "dashboard.html";
 }
 
-// Auto interstitial ad trigger (every 2 mins)
+// Trigger interstitial ad logic (handled in sw.js or external)
 setInterval(() => {
-  console.log("Trigger interstitial ad (Monetag handles this in sw.js)");
-  // No need to add ad code here — sw.js does it
+  console.log("⏱ Triggering interstitial ad...");
+  // sw.js or customAds.js handles the actual ad call
 }, 120000); // every 2 minutes

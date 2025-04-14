@@ -8,9 +8,10 @@
   <link rel="stylesheet" href="tasks.css" />
   <link rel="icon" href="assets/money_master_favicon.png" />
 
-  <!-- Firebase App -->
+  <!-- Firebase App & Auth -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyDo6BwWCRTexL_-lUwgy41FYB3zpJKRiWU",
@@ -22,9 +23,18 @@
       measurementId: "G-62K0SFSZK4"
     };
 
-    initializeApp(firebaseConfig);
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+
+    // Redirect to login.html if not logged in
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = "login.html";
+      }
+    });
   </script>
 </head>
+
 <body onload="loadTasksPage()">
 
   <!-- Top Banner Ad -->
@@ -39,7 +49,7 @@
 
     <p>Current Coins: <span id="coinDisplay">0</span></p>
 
-    <button onclick="watchAdAndReward()">Watch Ad & Earn 500 Coins</button>
+    <button id="watchAdBtn" onclick="watchAdAndReward()">Watch Ad & Earn 500 Coins</button>
     <p class="info-text">Watch unlimited ads & earn more!</p>
   </div>
 
@@ -59,6 +69,7 @@
     }
   </script>
 
+  <!-- Main Logic -->
   <script type="module" src="tasks.js"></script>
 </body>
 </html>

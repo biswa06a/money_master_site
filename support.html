@@ -7,6 +7,13 @@
   <title>Support - Money Master</title>
   <link rel="stylesheet" href="support.css" />
   <link rel="icon" href="assets/money_master_favicon.png" />
+
+  <!-- Disable outline (click glow) -->
+  <style>
+    *:focus {
+      outline: none;
+    }
+  </style>
 </head>
 <body>
 
@@ -19,24 +26,50 @@
   <div class="support-container">
     <img src="assets/icon_support.png" class="support-icon" alt="Support" />
 
-    <h2>Need Help?</h2>
+    <h2 class="section-title">Need Help?</h2>
 
     <div class="form-group">
-      <label>Subject</label>
+      <label for="subject">Subject</label>
       <input type="text" id="subject" placeholder="Enter your issue subject" />
     </div>
 
     <div class="form-group">
-      <label>Message</label>
+      <label for="message">Message</label>
       <textarea id="message" placeholder="Describe your issue..."></textarea>
     </div>
 
-    <button onclick="sendSupport()">Send Message</button>
+    <button class="send-btn" onclick="sendSupport()">Send Message</button>
   </div>
 
   <!-- Bottom Ad -->
   <div class="ad-banner bottom-banner">[ Bottom Banner Ad ]</div>
 
+  <!-- Firebase Auth Check -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDo6BwWCRTexL_-lUwgy41FYB3zpJKRiWU",
+      authDomain: "money-master-89c02.firebaseapp.com",
+      projectId: "money-master-89c02",
+      storageBucket: "money-master-89c02.appspot.com",
+      messagingSenderId: "226410161274",
+      appId: "1:226410161274:web:62793ff8d39e0d642707c3",
+      measurementId: "G-62K0SFSZK4"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = "login.html";
+      }
+    });
+  </script>
+
+  <!-- SW Register -->
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register("sw.js");
@@ -49,6 +82,7 @@
     }
   </script>
 
+  <!-- Support Logic -->
   <script src="support.js"></script>
 </body>
 </html>

@@ -1,6 +1,9 @@
-						body {
+/* Background and Base Layout */
+body {
   margin: 0;
   padding: 0;
+  padding-top: 60px;
+  padding-bottom: 60px;
   background: url('assets/main_bg.jpg') no-repeat center center fixed;
   background-size: cover;
   font-family: 'Segoe UI', sans-serif;
@@ -8,10 +11,12 @@
   text-align: center;
 }
 
+/* Tap Container */
 .tap-container {
   padding: 80px 20px 40px;
 }
 
+/* Bitcoin Tap Icon */
 #tapIcon {
   width: 160px;
   height: 160px;
@@ -26,6 +31,7 @@
   transform: scale(0.92);
 }
 
+/* Coin Counter */
 #coinCount {
   font-size: 26px;
   font-weight: bold;
@@ -34,6 +40,7 @@
   display: inline-block;
 }
 
+/* Dashboard Icon */
 .dashboard-icon {
   position: fixed;
   top: 15px;
@@ -47,6 +54,7 @@
   box-shadow: 0 0 10px #00f5a0;
 }
 
+/* Ad Banners */
 .ad-banner {
   width: 100%;
   height: 60px;
@@ -72,7 +80,7 @@
   z-index: 100;
 }
 
-body {
-  padding-top: 60px;
-  padding-bottom: 60px;
+/* Disable focus outlines (squares) */
+*:focus {
+  outline: none;
 }

@@ -11,6 +11,7 @@
   <!-- Firebase App -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyDo6BwWCRTexL_-lUwgy41FYB3zpJKRiWU",
@@ -22,8 +23,22 @@
       measurementId: "G-62K0SFSZK4"
     };
 
-    initializeApp(firebaseConfig);
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = "login.html";
+      }
+    });
   </script>
+
+  <!-- Disable focus outlines globally -->
+  <style>
+    *:focus {
+      outline: none;
+    }
+  </style>
 </head>
 <body onload="loadWallet()">
 
@@ -33,6 +48,7 @@
   <!-- Back Button -->
   <img src="assets/icon_nevigation.png" class="nav-icon" onclick="goBack()" alt="Back" />
 
+  <!-- Wallet Content -->
   <div class="wallet-container">
     <img src="assets/icon_wallet.png" class="wallet-icon" alt="Wallet" />
     <h2>Your Wallet</h2>
@@ -52,9 +68,13 @@
     function goBack() {
       const sound = new Audio("assets/sound.mp3");
       sound.play();
-      window.location.href = "dashboard.html";
+      setTimeout(() => {
+        window.location.href = "dashboard.html";
+      }, 150);
     }
   </script>
 
+  <!-- Main Logic -->
   <script src="wallet.js"></script>
 </body>
+</html>

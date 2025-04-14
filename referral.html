@@ -11,6 +11,7 @@
   <!-- Firebase -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyDo6BwWCRTexL_-lUwgy41FYB3zpJKRiWU",
@@ -23,10 +24,27 @@
     };
 
     initializeApp(firebaseConfig);
+    
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = "login.html";
+      } else {
+        // Load referral data for logged-in user
+        loadReferralData(user);
+      }
+    });
+
+    function loadReferralData(user) {
+      const refCode = user.uid.substring(0, 6);  // Example to generate a code
+      document.getElementById("refCode").textContent = refCode;
+      // Placeholder for total referrals and earnings
+      document.getElementById("refCount").textContent = "10";  // Example referral count
+      document.getElementById("refEarnings").textContent = "500";  // Example earnings
+    }
   </script>
 </head>
 <body onload="loadReferralPage()">
-
   <!-- Top Banner Ad -->
   <div class="ad-banner top-banner">[ Top Banner Ad ]</div>
 
@@ -35,9 +53,8 @@
 
   <div class="referral-container">
     <img src="assets/icon_referral.png" class="referral-icon" alt="Referral" />
-
     <h2>Invite & Earn</h2>
-    
+
     <p>Your Code:</p>
     <div class="copy-box">
       <span id="refCode">Loading...</span>
@@ -61,6 +78,17 @@
       const s = new Audio("assets/sound.mp3");
       s.play();
       window.location.href = "dashboard.html";
+    }
+
+    function copyCode() {
+      const refCode = document.getElementById("refCode");
+      const input = document.createElement("input");
+      input.setAttribute("value", refCode.textContent);
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand("copy");
+      document.body.removeChild(input);
+      alert("Referral code copied!");
     }
   </script>
 

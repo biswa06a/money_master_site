@@ -13,14 +13,14 @@
   <!-- Top Ad -->
   <div class="ad-banner top-banner">[ Top Banner Ad ]</div>
 
-  <!-- Back Icon -->
+  <!-- Navigation Icon -->
   <img src="assets/icon_nevigation.png" class="nav-icon" onclick="goBack()" alt="Back" />
 
   <div class="settings-container">
     <img src="assets/icon_settings.png" class="settings-icon" alt="Settings" />
-
     <h2>User Settings</h2>
 
+    <!-- Basic Info -->
     <div class="form-group">
       <label>Name</label>
       <input type="text" id="userName" readonly />
@@ -45,12 +45,59 @@
     </div>
 
     <button onclick="saveSettings()">Save Settings</button>
+
+    <!-- New Section: Editable Options -->
+    <div class="settings-section">
+      <h3>Account Updates</h3>
+
+      <div class="setting-option">
+        <img src="assets/icon_guest.png" class="option-icon" alt="User" />
+        <input type="text" id="changeName" placeholder="Change Name" />
+        <button onclick="changeName()">Update</button>
+      </div>
+
+      <div class="setting-option">
+        <span class="emoji-icon">🔑</span>
+        <input type="password" id="changePassword" placeholder="New Password" />
+        <button onclick="changePassword()">Update</button>
+      </div>
+
+      <div class="setting-option">
+        <img src="assets/icon_mail.png" class="option-icon" alt="Email" />
+        <input type="email" id="changeEmail" placeholder="New Email" />
+        <button onclick="changeEmail()">Update</button>
+      </div>
+    </div>
   </div>
 
   <!-- Bottom Ad -->
   <div class="ad-banner bottom-banner">[ Bottom Banner Ad ]</div>
 
-  <!-- Service Worker & Script -->
+  <!-- Service Worker + Firebase Check -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDo6BwWCRTexL_-lUwgy41FYB3zpJKRiWU",
+      authDomain: "money-master-89c02.firebaseapp.com",
+      projectId: "money-master-89c02",
+      storageBucket: "money-master-89c02.appspot.com",
+      messagingSenderId: "226410161274",
+      appId: "1:226410161274:web:62793ff8d39e0d642707c3",
+      measurementId: "G-62K0SFSZK4"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = "login.html";
+      }
+    });
+  </script>
+
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register("sw.js");

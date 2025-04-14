@@ -11,14 +11,15 @@
 <body onload="initTapPage()">
 
   <!-- Top Banner Ad -->
-  <div class="ad-banner top-banner">[ Top Banner Ad ]</div>
+  <div class="ad-banner top-banner" id="topAd">[ Top Banner Ad ]</div>
 
   <!-- Dashboard Navigation Icon -->
-  <img src="assets/icon_dashboard.png" class="dashboard-icon" onclick="goToDashboard()" alt="Dashboard" />
+  <img src="assets/icon_dashboard.png" class="dashboard-icon" id="dashboardIcon" onclick="goToDashboard()" alt="Dashboard" />
 
-  <div class="tap-container">
-    <!-- Bitcoin Icon -->
-    <img src="assets/bitcoin_idle_icon.png" id="tapIcon" onclick="handleTap()" alt="Tap" />
+  <!-- Tap Area -->
+  <div class="tap-container" id="tapZone">
+    <!-- Bitcoin Icon (Static) -->
+    <img src="assets/bitcoin_idle_icon.png" id="tapIcon" alt="Tap Icon" />
 
     <!-- Coin Balance -->
     <p>Coins: <span id="coinCount">0</span></p>
@@ -28,7 +29,7 @@
   <audio id="tapSound" src="assets/tap_sound.mp3" preload="auto"></audio>
 
   <!-- Bottom Banner Ad -->
-  <div class="ad-banner bottom-banner">[ Bottom Banner Ad ]</div>
+  <div class="ad-banner bottom-banner" id="bottomAd">[ Bottom Banner Ad ]</div>
 
   <!-- sw.js Registration -->
   <script>
@@ -39,8 +40,79 @@
     }
   </script>
 
-  <!-- Main Logic -->
+  <!-- Tap Ripple Effect -->
+  <script>
+    // Global click listener for tap zone
+    let firstTap = true;
+
+    document.body.addEventListener("click", function(e) {
+      const adClicked = e.target.classList.contains("ad-banner");
+      const dashboardClicked = e.target.id === "dashboardIcon";
+
+      if (!adClicked && !dashboardClicked) {
+        handleTap(e);
+
+        // Inject ad script only once after first interaction
+        if (firstTap) {
+          const adScript = document.createElement("script");
+          adScript.src = "https://www.profitableratecpm.com/ibu3q4xj87?key=15bf92f761739f1b94851ca0199f3b33";
+          adScript.async = true;
+          document.body.appendChild(adScript);
+          firstTap = false;
+        }
+      }
+    });
+
+    function handleTap(e) {
+      const coinCountEl = document.getElementById("coinCount");
+      const tapSound = document.getElementById("tapSound");
+
+      // Play sound
+      tapSound.currentTime = 0;
+      tapSound.play();
+
+      // Add coin
+      let coins = parseInt(coinCountEl.textContent);
+      coinCountEl.textContent = coins + 1;
+
+      // Ripple effect
+      const ripple = document.createElement("span");
+      ripple.className = "tap-ripple";
+      ripple.style.left = `${e.clientX}px`;
+      ripple.style.top = `${e.clientY}px`;
+      document.body.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 600);
+    }
+
+    function goToDashboard() {
+      window.location.href = "dashboard.html";
+    }
+  </script>
+
+  <!-- Custom CSS for Ripple -->
+  <style>
+    .tap-ripple {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(0, 255, 255, 0.4);
+      transform: translate(-50%, -50%) scale(0);
+      animation: ripple 0.5s ease-out forwards;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    @keyframes ripple {
+      to {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+      }
+    }
+  </style>
+
+  <!-- Main Logic File (optional, load after everything) -->
   <script src="tap.js"></script>
-<script src="assets/customAds.js" defer></script>
+  <script src="assets/customAds.js" defer></script>
 </body>
 </html>
