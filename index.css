@@ -1,0 +1,94 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: url('assets/loading_bg.gif') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  text-align: center;
+}
+
+.app-logo {
+  margin-top: 80px;
+  width: 180px;
+  height: auto;
+}
+
+.main-container {
+  padding: 20px;
+}
+
+.login-options {
+  margin: 30px 0;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.icon-btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #00f5a0;
+  box-shadow: 0 0 15px #00f5a0;
+  object-fit: cover;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.icon-btn:hover {
+  transform: scale(1.1);
+}
+
+.create-btn {
+  padding: 12px 30px;
+  font-size: 16px;
+  margin-top: 15px;
+  background: #00f5a0;
+  color: #000;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 0 10px #00f5a0;
+}
+
+.small-link {
+  font-size: 13px;
+  margin-top: 15px;
+  color: #ccc;
+}
+
+.small-link a {
+  color: #00f5a0;
+  text-decoration: underline;
+}
+
+.ad-banner {
+  width: 100%;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  background: #f5f5f5;
+  color: #000;
+  font-size: 14px;
+  box-shadow: 0 0 8px #aaa;
+  z-index: 999;
+}
+
+.top-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.bottom-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+body {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="monetag" content="c2185f0f954c073056658902a99539ea" />
+  <title>Login - Money Master</title>
+  <link rel="stylesheet" href="login.css" />
+  <link rel="icon" href="assets/money_master_favicon.png" />
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getAuth } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDo6BwWCRTexL_-lUwgy41FYB3zpJKRiWU",
+      authDomain: "money-master-89c02.firebaseapp.com",
+      projectId: "money-master-89c02",
+      storageBucket: "money-master-89c02.appspot.com",
+      messagingSenderId: "226410161274",
+      appId: "1:226410161274:web:62793ff8d39e0d642707c3",
+      measurementId: "G-62K0SFSZK4"
+    };
+
+    const app = initializeApp(firebaseConfig);
+  </script>
+</head>
+<body>
+
+  <!-- Top Banner Ad -->
+  <div class="ad-banner top-banner">[ Top Banner Ad ]</div>
+
+  <!-- Navigation Back Icon -->
+  <img src="assets/icon_nevigation.png" class="nav-icon" onclick="goBack()" alt="Back" />
+
+  <div class="login-container">
+    <img src="assets/money_master_logo.png" class="app-logo" alt="Logo" />
+
+    <h3>Login with your Google account</h3>
+
+    <img src="assets/icon_mail.png" class="icon-btn" onclick="signInWithGoogle()" alt="Login" />
+
+    <p class="small-link">By logging in you accept our <a href="terms.html">Terms & Privacy</a></p>
+  </div>
+
+  <!-- Bottom Banner Ad -->
+  <div class="ad-banner bottom-banner">[ Bottom Banner Ad ]</div>
+
+  <!-- Register service worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').then((reg) => {
+        console.log("Service worker registered for ads:", reg);
+      });
+    }
+
+    function goBack() {
+      const clickSound = new Audio("assets/sound.mp3");
+      clickSound.play();
+      window.location.href = "index.html";
+    }
+  </script>
+
+  <script type="module" src="login.js"></script>
+</body>
+</html>

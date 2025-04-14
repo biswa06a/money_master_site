@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="monetag" content="c2185f0f954c073056658902a99539ea" />
+  <title>Dashboard - Money Master</title>
+  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="icon" href="assets/money_master_favicon.png" />
+</head>
+<body onload="initDashboard()">
+
+  <!-- Top Ad Banner -->
+  <div class="ad-banner top-banner">[ Top Banner Ad ]</div>
+
+  <!-- Back Button -->
+  <img src="assets/icon_nevigation.png" class="nav-icon" onclick="goBack()" alt="Back" />
+
+  <div class="dashboard-container">
+    <img src="assets/money_master_logo.png" class="logo" alt="Logo" />
+
+    <div class="icon-grid">
+      <div class="icon-item" onclick="goTo('wallet.html')">
+        <img src="assets/icon_wallet.png" alt="Wallet" />
+        <p>Wallet</p>
+      </div>
+      <div class="icon-item" onclick="goTo('withdraw.html')">
+        <img src="assets/icon_withdraw.png" alt="Withdraw" />
+        <p>Withdraw</p>
+      </div>
+      <div class="icon-item" onclick="goTo('referral.html')">
+        <img src="assets/icon_referral.png" alt="Referral" />
+        <p>Referral</p>
+      </div>
+      <div class="icon-item" onclick="goTo('tasks.html')">
+        <img src="assets/icon_tasks.png" alt="Tasks" />
+        <p>Tasks</p>
+      </div>
+      <div class="icon-item" onclick="goTo('leaderboard.html')">
+        <img src="assets/icon_leaderboard.png" alt="Leaderboard" />
+        <p>Leaderboard</p>
+      </div>
+      <div class="icon-item" onclick="goTo('premium.html')">
+        <img src="assets/icon_premium.png" alt="Premium" />
+        <p>Premium</p>
+      </div>
+      <div class="icon-item" onclick="goTo('settings.html')">
+        <img src="assets/icon_settings.png" alt="Settings" />
+        <p>Settings</p>
+      </div>
+      <div class="icon-item" onclick="goTo('support.html')">
+        <img src="assets/icon_support.png" alt="Support" />
+        <p>Support</p>
+      </div>
+      <div class="icon-item" onclick="logoutUser()">
+        <img src="assets/icon_logout.png" alt="Logout" />
+        <p>Logout</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Ad Banner -->
+  <div class="ad-banner bottom-banner">[ Bottom Banner Ad ]</div>
+
+  <!-- Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register("sw.js").then((reg) => {
+        console.log("sw.js registered in dashboard");
+      });
+    }
+  </script>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="monetag" content="c2185f0f954c073056658902a99539ea" />
+  <title>Referral - Money Master</title>
+  <link rel="stylesheet" href="referral.css" />
+  <link rel="icon" href="assets/money_master_favicon.png" />
+
+  <!-- Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDo6BwWCRTexL_-lUwgy41FYB3zpJKRiWU",
+      authDomain: "money-master-89c02.firebaseapp.com",
+      projectId: "money-master-89c02",
+      storageBucket: "money-master-89c02.appspot.com",
+      messagingSenderId: "226410161274",
+      appId: "1:226410161274:web:62793ff8d39e0d642707c3",
+      measurementId: "G-62K0SFSZK4"
+    };
+
+    initializeApp(firebaseConfig);
+  </script>
+</head>
+<body onload="loadReferralPage()">
+
+  <!-- Top Banner Ad -->
+  <div class="ad-banner top-banner">[ Top Banner Ad ]</div>
+
+  <!-- Back Icon -->
+  <img src="assets/icon_nevigation.png" class="nav-icon" onclick="goBack()" alt="Back" />
+
+  <div class="referral-container">
+    <img src="assets/icon_referral.png" class="referral-icon" alt="Referral" />
+
+    <h2>Invite & Earn</h2>
+    
+    <p>Your Code:</p>
+    <div class="copy-box">
+      <span id="refCode">Loading...</span>
+      <button onclick="copyCode()">Copy</button>
+    </div>
+
+    <p>Total Referrals: <span id="refCount">0</span></p>
+    <p>Referral Earnings: ₹<span id="refEarnings">0</span></p>
+  </div>
+
+  <!-- Bottom Banner Ad -->
+  <div class="ad-banner bottom-banner">[ Bottom Banner Ad ]</div>
+
+  <!-- SW & Script -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register("sw.js");
+    }
+
+    function goBack() {
+      const s = new Audio("assets/sound.mp3");
+      s.play();
+      window.location.href = "dashboard.html";
+    }
+  </script>
+
+  <script type="module" src="referral.js"></script>
+</body>
+</html>

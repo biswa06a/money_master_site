@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="monetag" content="c2185f0f954c073056658902a99539ea" />
+  <title>Leaderboard - Money Master</title>
+  <link rel="stylesheet" href="leaderboard.css" />
+  <link rel="icon" href="assets/money_master_favicon.png" />
+</head>
+<body onload="loadLeaderboard()">
+
+  <!-- Top Ad -->
+  <div class="ad-banner top-banner">[ Top Banner Ad ]</div>
+
+  <!-- Back Icon -->
+  <img src="assets/icon_nevigation.png" class="nav-icon" onclick="goBack()" alt="Back" />
+
+  <div class="leaderboard-container">
+    <img src="assets/icon_leaderboard.png" class="leader-icon" alt="Leaderboard" />
+    <h2>Top Earners</h2>
+
+    <div id="leaderList" class="leader-list">
+      <!-- Filled by JS -->
+    </div>
+  </div>
+
+  <!-- Bottom Ad -->
+  <div class="ad-banner bottom-banner">[ Bottom Banner Ad ]</div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register("sw.js");
+    }
+
+    function goBack() {
+      const sound = new Audio("assets/sound.mp3");
+      sound.play();
+      window.location.href = "dashboard.html";
+    }
+  </script>
+
+  <script src="leaderboard.js"></script>
+</body>
+</html>

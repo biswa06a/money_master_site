@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="monetag" content="c2185f0f954c073056658902a99539ea" />
+  <title>Tap to Earn - Money Master</title>
+  <link rel="stylesheet" href="tap.css" />
+  <link rel="icon" href="assets/money_master_favicon.png" />
+</head>
+<body onload="initTapPage()">
+
+  <!-- Top Banner Ad -->
+  <div class="ad-banner top-banner">[ Top Banner Ad ]</div>
+
+  <!-- Dashboard Navigation Icon -->
+  <img src="assets/icon_dashboard.png" class="dashboard-icon" onclick="goToDashboard()" alt="Dashboard" />
+
+  <div class="tap-container">
+    <!-- Bitcoin Icon -->
+    <img src="assets/bitcoin_idle_icon.png" id="tapIcon" onclick="handleTap()" alt="Tap" />
+
+    <!-- Coin Balance -->
+    <p>Coins: <span id="coinCount">0</span></p>
+  </div>
+
+  <!-- Tap Sound -->
+  <audio id="tapSound" src="assets/tap_sound.mp3" preload="auto"></audio>
+
+  <!-- Bottom Banner Ad -->
+  <div class="ad-banner bottom-banner">[ Bottom Banner Ad ]</div>
+
+  <!-- sw.js Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').then(reg => {
+        console.log("sw.js registered for ads:", reg);
+      });
+    }
+  </script>
+
+  <!-- Main Logic -->
+  <script src="tap.js"></script>
+</body>
+</html>

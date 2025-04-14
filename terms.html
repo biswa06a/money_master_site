@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="monetag" content="c2185f0f954c073056658902a99539ea" />
+  <title>Terms & Conditions - Money Master</title>
+  <link rel="stylesheet" href="terms.css" />
+  <link rel="icon" href="assets/money_master_favicon.png" />
+</head>
+<body>
+
+  <!-- Top Ad -->
+  <div class="ad-banner top-banner">[ Top Banner Ad ]</div>
+
+  <!-- Back Icon -->
+  <img src="assets/icon_nevigation.png" class="nav-icon" onclick="goBack()" alt="Back" />
+
+  <div class="terms-container">
+    <img src="assets/icon_settings.png" class="terms-icon" alt="Terms" />
+    <h2>Terms & Conditions</h2>
+
+    <div class="terms-content">
+      <p><strong>1. Coin-to-Cash Policy:</strong> 1000 Coins = ₹1. Minimum withdrawal is ₹200 (i.e., 200,000 coins).</p>
+
+      <p><strong>2. Ad Earnings:</strong> Users may earn coins by watching video ads, completing tasks, or inviting friends.</p>
+
+      <p><strong>3. Guest Accounts:</strong> Guest users are allowed to play but cannot withdraw unless they register with Gmail.</p>
+
+      <p><strong>4. Anti-Fraud Policy:</strong> Any attempt to manipulate or hack the system will result in permanent ban and coin forfeiture.</p>
+
+      <p><strong>5. Payment Info:</strong> Always enter correct UPI/Paytm details. We are not responsible for failed or incorrect transfers.</p>
+
+      <p><strong>6. Account Info:</strong> We only store your Gmail UID, email, and basic name for login & dashboard sync.</p>
+
+      <p><strong>7. Withdrawal Time:</strong> Withdrawals may take 3–5 working days, depending on verification.</p>
+
+      <p><strong>8. Limited Responsibility:</strong> We do not guarantee income and all rewards depend on ad views & task completion.</p>
+
+      <p><strong>9. Changes:</strong> These terms may be updated at any time. We recommend reviewing them frequently.</p>
+
+      <p><strong>10. Support:</strong> For any dispute or issue, contact us through the Support section of the app.</p>
+    </div>
+  </div>
+
+  <!-- Bottom Ad -->
+  <div class="ad-banner bottom-banner">[ Bottom Banner Ad ]</div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register("sw.js");
+    }
+
+    function goBack() {
+      const s = new Audio("assets/sound.mp3");
+      s.play();
+      window.location.href = "dashboard.html";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="monetag" content="c2185f0f954c073056658902a99539ea" />
+  <title>Settings - Money Master</title>
+  <link rel="stylesheet" href="settings.css" />
+  <link rel="icon" href="assets/money_master_favicon.png" />
+</head>
+<body onload="loadSettings()">
+
+  <!-- Top Ad -->
+  <div class="ad-banner top-banner">[ Top Banner Ad ]</div>
+
+  <!-- Back Icon -->
+  <img src="assets/icon_nevigation.png" class="nav-icon" onclick="goBack()" alt="Back" />
+
+  <div class="settings-container">
+    <img src="assets/icon_settings.png" class="settings-icon" alt="Settings" />
+
+    <h2>User Settings</h2>
+
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" id="userName" readonly />
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="text" id="userEmail" readonly />
+    </div>
+
+    <div class="form-group">
+      <label>UPI / Paytm ID</label>
+      <input type="text" id="userUpi" placeholder="Enter your UPI / Paytm ID" />
+    </div>
+
+    <div class="form-group">
+      <label>Notifications</label>
+      <select id="notifications">
+        <option value="on">On</option>
+        <option value="off">Off</option>
+      </select>
+    </div>
+
+    <button onclick="saveSettings()">Save Settings</button>
+  </div>
+
+  <!-- Bottom Ad -->
+  <div class="ad-banner bottom-banner">[ Bottom Banner Ad ]</div>
+
+  <!-- Service Worker & Script -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register("sw.js");
+    }
+
+    function goBack() {
+      const sound = new Audio("assets/sound.mp3");
+      sound.play();
+      window.location.href = "dashboard.html";
+    }
+  </script>
+
+  <script src="settings.js"></script>
+</body>
+</html>

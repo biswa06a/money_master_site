@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="monetag" content="c2185f0f954c073056658902a99539ea" />
+  <title>Premium - Money Master</title>
+  <link rel="stylesheet" href="premium.css" />
+  <link rel="icon" href="assets/money_master_favicon.png" />
+</head>
+<body>
+
+  <!-- Top Banner Ad -->
+  <div class="ad-banner top-banner">[ Top Banner Ad ]</div>
+
+  <!-- Back Icon -->
+  <img src="assets/icon_nevigation.png" class="nav-icon" onclick="goBack()" alt="Back" />
+
+  <div class="premium-container">
+    <img src="assets/icon_premium.png" class="premium-icon" alt="Premium" />
+
+    <h2>Premium Upgrade</h2>
+
+    <h3 class="coming">COMING SOON</h3>
+
+    <ul class="features">
+      <li>No Ads Experience</li>
+      <li>Faster Withdrawal Processing</li>
+      <li>Exclusive Daily Rewards</li>
+      <li>Premium Badges & Leaderboard</li>
+    </ul>
+  </div>
+
+  <!-- Bottom Ad Banner -->
+  <div class="ad-banner bottom-banner">[ Bottom Banner Ad ]</div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register("sw.js");
+    }
+
+    function goBack() {
+      const s = new Audio("assets/sound.mp3");
+      s.play();
+      window.location.href = "dashboard.html";
+    }
+  </script>
+</body>
+</html>
